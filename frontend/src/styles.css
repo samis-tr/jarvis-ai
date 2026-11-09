@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #04060c;
+  --color-panel: #0a0f1a;
+  --color-panel-2: #0e1524;
+  --color-line: #1a2438;
+  --color-ink: #e6f1ff;
+  --color-muted: #7d8ba5;
+  --color-cyan: #22e3ff;
+  --color-cyan-dim: #0e7a8c;
+  --color-violet: #9b7bff;
+  --color-amber: #ffb547;
+  --color-danger: #ff4d6d;
+  --color-ok: #3ddc97;
+  --font-sans: "Space Grotesk", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-arabic: "IBM Plex Sans Arabic", "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(1200px 700px at 50% 30%, #0b1630 0%, var(--color-void) 60%) fixed;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+html[dir="rtl"] body { font-family: var(--font-arabic); }
+
+.glass {
+  background: linear-gradient(180deg, rgb(14 21 36 / 0.78), rgb(9 13 23 / 0.78));
+  border: 1px solid var(--color-line);
+  backdrop-filter: blur(14px);
+}
+.glow-cyan { box-shadow: 0 0 0 1px rgb(34 227 255 / 0.35), 0 0 24px -4px rgb(34 227 255 / 0.45); }
+.glow-amber { box-shadow: 0 0 0 1px rgb(255 181 71 / 0.5), 0 0 28px -6px rgb(255 181 71 / 0.55); }
+.scroll-thin { scrollbar-width: thin; scrollbar-color: #1f2b44 transparent; }
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgb(34 227 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(34 227 255 / 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 50% 40%, black 0%, transparent 70%);
+}
+
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise 0.28s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) { .rise { animation: none; } }
+
+.md p { margin: 0.35em 0; }
+.md ul, .md ol { margin: 0.35em 0; padding-inline-start: 1.3em; }
+.md ul { list-style: disc; }
+.md ol { list-style: decimal; }
+.md h1, .md h2, .md h3 { font-weight: 600; margin: 0.6em 0 0.25em; color: #bff6ff; }
+.md code { font-family: var(--font-mono); font-size: 0.85em; background: #111a2c; padding: 0.1em 0.35em; border-radius: 4px; }
+.md a { color: var(--color-cyan); text-decoration: underline; text-underline-offset: 2px; }
